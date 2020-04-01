@@ -28,9 +28,94 @@
       
       <!-- Information about algorithm and figures -->
       <div class='container' >
-        <h1>DFS Algorithm for Maze Generation</h1>
+        <h1>Depth First Search Algorithm for Maze Generation</h1>
+        <hr>
         
+        <div class="container nav-scroller py-1 mb-2 bg-dark">
+            <nav class="nav d-flex justify-content-between">
+                <a class="p-4 text-light" href="DFSGraphics0.html"><h3>Interactive Graphics Implementation</h3></a>
+            </nav>
+        </div>
+        <hr>
         
+        <h2>Algorithm</h2>
+        <p>
+            <cite><a href='https://en.wikipedia.org/wiki/Depth-first_search' class='text-dark'>Depth First Search(DFS)</a></cite> Algorithm is a searching algorithm in graph theory
+            where we are given a graph <i>G(V,E)</i> where <i>V</i> is the set of vertices(nodes) and <i>E</i> is the set of Edges connecting vertices, we are given with a start node
+            and the node that we need to find in the graph i.e. the goal node. now the algorithm proceeds as follows.
+        </p>
+        <code>
+        <ol>
+            <li>make all nodes unvisited</li>
+            <li>push the first node onto the stack</li>
+            <li>while the stack is not empty do</li>
+            <li> &emsp;pop the first element from stack let it be v</li>
+            <li> &emsp;if v is the goal node then return</li>
+            <li> &emsp;make v as visited</li>
+            <li> &emsp;push all nodes adjacent to v which are not visited on to the stack</li>
+        </ol>
+        </code>
+        <p>
+            Here is also a recursive implementation of the Algorithm which must be called by start node as the initial parameter.
+            this one is more efficien and mostly used implementation of DFS.assume initally all nodes were unvisited.
+        </p>
+        <code>
+            <b>Procedure DFS(node n)</b>
+        <ol>
+            <li>if n is goal node then return</li>
+            <li>make n as visited node</li>
+            <li>for each node i adjacent to n</li>
+            <li> &emsp;if i is not visited then</li>
+            <li> &emsp;DFS(i)</li>
+        </ol>
+        </code>
+        <p>
+            The way Algorithm proceeds will not make any loops in the path followed by the algorithm, by this strategy
+            we will get a tree from the paths followed by the DFS algorithm.
+        </p>
+        <hr>
+        <h2>Maze Generation</h2>
+        <p>
+            In our implementation we will have to traverse the whole graph starting from a random node and adding the edges that the
+            Algorithm follows during the traversal of graph, which will give us the tree that we want and this will ultimately be the maze we wanted.
+            also the choice of the vertext that the algorithm explores next in the algorithm step 3 of Procedure DFS will be taken random which will give us the complete maze.
+        </p>
+        <hr>
+        <h2>Explaination</h2>
+        <p>
+            Lets take the following scenerio with 28 nodes and are coonected by the links as shown in the figure.
+        </p>
+        <div>
+            <img src='../../../images/maze/dfs/1.png' class="img-responsive">
+        </div>
+        <p>
+            Now let the algorithm start form node 11, making 11 as visited, now adjacent non visited nodes are 4,12,10 and 18, now suppose algorithm
+            chooses randomly node 4 as next node.
+        </p>
+        <div>
+            <img src='../../../images/maze/dfs/2.png' class="img-responsive">
+        </div>
+        <p>
+            Now we are at node 4, the algorithm make 4 as visited. now adjacent non visited nodes are 5 and 3 now suppose algorithm
+            chooses randomly node 5 as next node.
+        </p>
+        <div>
+            <img src='../../../images/maze/dfs/3.png' class="img-responsive">
+        </div>
+        <p>
+            Now we are at node 5, the algorithm make 5 as visited. now adjacent non visited nodes are 6 and 12 now suppose algorithm
+            chooses randomly node 12 as next node.
+        </p>
+        <div>
+            <img src='../../../images/maze/dfs/4.png' class="img-responsive">
+        </div>
+        <p>
+            After Sufficient Iterations the scenerio will look like this.
+        </p>
+        <div>
+            <img src='../../../images/maze/dfs/6.png' class="img-responsive">
+        </div>
+        <hr>
       </div>
       
         
