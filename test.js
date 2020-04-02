@@ -115,24 +115,37 @@ var points = [0.0,0.0, 5.0,
 var n=2;
 
 
+/**
+ *@author Ashwani kumar dwivedi ashwanikd0123@gmail.com
+ *@version 1.0
+ *@function draw
+ *Draw the graphics on the canvas by taking data from the variables
+ */
 function draw(){
     
+    // clearing the canvas for drawing
     gl.clearColor(0.0,0.0,0.0,1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     
+    // getting data in webgl supported format
     vertices = new Float32Array(points);
     FSIZE = vertices.BYTES_PER_ELEMENT;
     
+    // passing data to buffers
     gl.bufferData(gl.ARRAY_BUFFER,vertices,gl.STATIC_DRAW);
     
+    // passing data to a_Position attribute
     gl.vertexAttribPointer(a_Position,2,gl.FLOAT,false,FSIZE*6,0);
     gl.enableVertexAttribArray(a_Position);
     
+    // passing data to a_PointSize attribute
     gl.vertexAttribPointer(a_PointSize,1,gl.FLOAT,false,FSIZE*6,FSIZE*2);
     gl.enableVertexAttribArray(a_PointSize);
     
+    // passing data to a_Color attribute
     gl.vertexAttribPointer(a_Color,3,gl.FLOAT,false,FSIZE*6,FSIZE*3);
     gl.enableVertexAttribArray(a_Color);
     
-    gl.drawArrays(gl.POINTS,0,n);
+    // drawing command to webgl graphics
+    gl.drawArrays(gl.LINES,0,n);
 }
